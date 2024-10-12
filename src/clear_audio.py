@@ -1,0 +1,26 @@
+import librosa
+import noisereduce as nr
+import soundfile as sf
+
+from decorates import time_memory
+from typing import Optional, Any, Tuple
+
+
+@time_memory
+def clean_audio(audio_file: str) -> Optional[Tuple[Any, int | float]]:
+    """
+    Функция очистки аудио от шумов
+
+    :param audio_file: Путь к аудиофайлу
+    :return: Массив значений амплитуды аудиосигнала и частота дискретизации
+    """
+
+    # Загрузка MP3 файла
+    y, sr = librosa.load(audio_file, sr=16000)
+
+    # Подавление шума
+    y_denoised = nr.reduce_noise(y=y, sr=sr)
+
+    # sf.write('output2.wav', y_denoised, sr)
+
+    return y_denoised, sr
