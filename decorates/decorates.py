@@ -4,6 +4,8 @@ import psutil
 import os
 import threading
 
+from functools import wraps
+
 
 def memory_monitor(interval, results) -> None:
     """
@@ -22,6 +24,7 @@ def memory_monitor(interval, results) -> None:
 
 def time_memory(func: Callable) -> Callable:
     """ Декоратор измерения времени работы функции и используемой памяти """
+    @wraps(func)
     def wrapper(*args, **kwargs) -> Any:
         results = {'usage': [], 'stop': False}
         monitor_thread = threading.Thread(target=memory_monitor, args=(0.1, results))
