@@ -18,6 +18,4 @@ def clean_audio(audio_file: str) -> Optional[Tuple[Any, int | float]]:
     # Подавление шума
     y_denoised = nr.reduce_noise(y=y, sr=sr)
 
-    # sf.write('output2.wav', y_denoised, sr)
-
     return y_denoised, sr

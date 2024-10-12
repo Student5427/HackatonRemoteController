@@ -57,7 +57,7 @@ def get_command(text: str) -> Tuple[int, int]:
     doc = _nlp(text_lower)
     words_text = ' '.join([token.lemma_ for token in doc if not token.is_stop])
 
-    commands = label2id._label2id
+    commands = label2id.get_labels()
     for command in commands:
 
         # Лемматизация слов в команде
