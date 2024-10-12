@@ -2,7 +2,6 @@ import re
 import spacy
 
 from typing import Tuple
-from decorates.decorates import time_memory
 
 import data.label2id as label2id
 
@@ -44,7 +43,6 @@ _num_dict = {
 _pattern_nums = rf"\b({'|'.join(re.escape(key) for key in _num_dict.keys())})\b"
 
 
-@time_memory
 def get_command(text: str) -> Tuple[int, int]:
     """
     Функция нахождения команды в тексте

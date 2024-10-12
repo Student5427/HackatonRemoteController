@@ -1,13 +1,10 @@
 from clear_audio import clean_audio
 from command_from_text import get_command
 
-from decorates.decorates import time_memory
-
 
 class ModelPredict:
 
     @classmethod
-    @time_memory
     def predict(cls, audio_path: str) -> dict[str: str | int]:
 
         # Очистка звука
