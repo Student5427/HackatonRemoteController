@@ -14,8 +14,8 @@ def get_text(audio: Any, sf: int | float) -> str:
     """
 
     # Загрузка модели и процессора из сохраненной директории
-    model = WhisperForConditionalGeneration.from_pretrained("..\\whisper-fine-tuned")
-    processor = WhisperProcessor.from_pretrained("..\\whisper-fine-tuned")
+    model = WhisperForConditionalGeneration.from_pretrained("../whisper-fine-tuned")
+    processor = WhisperProcessor.from_pretrained("../whisper-fine-tuned")
 
     # Подготовка аудиофайла для модели
     inputs = processor(audio, sampling_rate=16000, return_tensors="pt")
