@@ -1,26 +1,29 @@
-import data.annotation.label2id as label2id
 from clear_audio import clean_audio
-from command_from_text import find_command_in_text
-
-from decorates import time_memory
+from command_from_text import get_command
 
 
-@time_memory
-def main():
-    audio_filename = "..\\data\\hr_bot_noise\\2d8bef86-76fe-11ee-96b9-c09bf4619c03.mp3"
+class ModelPredict:
 
-    # Очистка звука
-    cleaned_audio = clean_audio(audio_filename)
+    @classmethod
+    def predict(cls, audio_path: str) -> dict[str: str | int]:
 
-    # Получение из текста набор команд
-    commands = label2id._label2id
-    command = find_command_in_text("привет локоматив нужно осадить на 16 вагонов сделай пожалуйста", commands)
-    if isinstance(command, tuple):
-        print(f'Команда: {command[0]}\nАргумент: {command[1]}')
-    else:
-        print(f'Команда: {command}')
+        # Очистка звука
+        amplitude, sf = clean_audio(audio_path)
+
+        # Преобразование из аудио в текст
+        text = "привет нужно осадить на шестнадцать вагонов сделай пожалуйста"
+
+        # Получение из текста команды
+        id_command, attribute = get_command(text)
+
+        return {
+            "text": text,
+            "label": id_command,
+            "attribute": attribute
+        }
 
 
 # Основной процесс
 if __name__ == "__main__":
-    main()
+    cls = ModelPredict()
+    cls.predict("..\\data\\hr_bot_noise\\2d8bef86-76fe-11ee-96b9-c09bf4619c03.mp3")

@@ -1,12 +1,9 @@
 import librosa
 import noisereduce as nr
-import soundfile as sf
 
-from decorates import time_memory
 from typing import Optional, Any, Tuple
 
 
-@time_memory
 def clean_audio(audio_file: str) -> Optional[Tuple[Any, int | float]]:
     """
     Функция очистки аудио от шумов
