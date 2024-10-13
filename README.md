@@ -9,37 +9,56 @@ HackatonRemoteController — это проект, предназначенный
 HackatonRemoteController
 |
 |- data
-|    |- label2id.py             # Набор команд и их ID
+|    |- label2id.py              # Набор команд и их ID
 |- src
 |    |
 |    |- main.py                  # Запуск файла
 |    |- clear_audio.py           # Очищение аудио от шумов
+|    |- KerasModel.py            # Распознавание текста из аудио
 |    |- command_from_text.py     # Преобразование из текста в команду
+|    |- WhisperModel.py          # Альтернативная модел распознавания текста из аудио
+|- model_keras
+|    |
+|    |- LeaningKerasModel.py     # Файл обучения модели распознавания текста из аудио
+|    |- *.*                      # Файлы работы модели
+|- model_whisper
+|    |
+|    |- LeaningWhisperModel.py     # Файл обучения модели распознавания текста из аудио
 |
 |- get_submissions.py            # Скрипт для получения сабмитов
+|- pyproject.toml                # Установка окружения
+|- requirements.txt              # Зависимости
 |- README.md                     # Документация проекта
 ```
 
-## Установка
+## Установка окружения
 
-1. Клонируйте репозиторий:
+Для установки окружения проекта выполните следующие шаги:
+
+### 1. Установите Poetry
+
+Если у вас еще не установлен Poetry, вы можете установить его, следуя [официальной документации](https://python-poetry.org/docs/#installation).
+
+### 2. Клонируйте репозиторий
+
+Сначала клонируйте репозиторий проекта:
+
    ```bash
    git clone https://github.com/username/HackatonRemoteController.git
+   cd hackatonremotecontroller
    ```
-2. Перейдите в директорию проекта:
+
+### 3. Установите зависимости
+Установите все необходимые зависимости, используя Poetry:
    ```bash
-   cd HackatonRemoteController
-   ```
-3. Установите необходимые зависимости:
-   ```bash
-   pip install -r requirements.txt
+   poetry install
    ```
 
 ## Использование
 
 Для запуска проекта выполните следующую команду:
 ```bash
-python src/main.py
+poetry run python <ваш_скрипт>.py
 ```
 
 ## Возможности
