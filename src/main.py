@@ -2,12 +2,15 @@
 # from tkinter import filedialog
 # import dearpygui.dearpygui as dpg
 
+# import os
+# import join
+# from time import time
+# from sklearn.metrics import f1_score as sklearn_f1_score
+
 from clear_audio import clean_audio
 from KerasModel import get_text
 # from WhisperModel import get_text
 from command_from_text import get_command
-
-from time import time
 
 
 class ModelPredict:
@@ -35,6 +38,61 @@ class ModelPredict:
 if __name__ == "__main__":
     cls = ModelPredict()
     result = cls.predict("..\\add_data\\hr_bot_noise\\4e874bd6-76fe-11ee-85e3-c09bf4619c03.mp3")
+
+""" Код вычислений метрик f1 и wer, а также среднего времени обработки аудио файла """
+
+# def wer(ground_truth: str, prediction: str) -> float:
+#     """Calculate the Word Error Rate (WER)."""
+#     ground_truth_words = ground_truth.split()
+#     prediction_words = prediction.split()
+#
+#     substitutions = sum(1 for i in range(len(ground_truth_words)) if i < len(prediction_words) and ground_truth_words[i] != prediction_words[i])
+#     insertions = max(0, len(prediction_words) - len(ground_truth_words))
+#     deletions = max(0, len(ground_truth_words) - len(prediction_words))
+#
+#     total_errors = substitutions + insertions + deletions
+#     return total_errors / len(ground_truth_words) if ground_truth_words else 0.0
+#
+# if __name__ == "__main__":
+#     cls = ModelPredict()
+#
+#     # Загрузка аннотаций
+#     with open('../add_data/annotation/hr_bot_noise.json', 'r', encoding='utf-8') as f:
+#         annotations = json.load(f)
+#
+#     true_labels = []
+#     predicted_labels = []
+#     true_texts = []
+#     predicted_texts = []
+#
+#     time_avg = 0
+#
+#     # Перебор всех аудиофайлов в директории
+#     for annotation in annotations:
+#         audio_filepath = annotation["audio_filepath"]
+#         audio_path = os.path.join('../add_data/hr_bot_noise', audio_filepath)
+#
+#         st = time()
+#         # Получение предсказания модели
+#         result = cls.predict(audio_path)
+#         time_avg += time() - st
+#
+#         # Сохранение истинных и предсказанных значений
+#         true_labels.append(annotation["label"])
+#         predicted_labels.append(result["label"])
+#         true_texts.append(annotation["text"])
+#         predicted_texts.append(result["text"])
+#
+#     # Вычисление F1-метрики
+#     f1_score_avg = sklearn_f1_score(true_labels, predicted_labels, average='weighted')
+#
+#     # Вычисление WER
+#     wer_scores = [wer(true_texts[i], predicted_texts[i]) for i in range(len(true_texts))]
+#     wer_avg = sum(wer_scores) / len(wer_scores) if wer_scores else 0.0
+#
+#     print(f"Average F1 Score: {f1_score_avg:.4f}")
+#     print(f"Average WER Score: {wer_avg:.4f}")
+#     print(f'Время: {time_avg / len(annotations):.4f}')
 
 """ Визуализация с tkinter """
 
