@@ -44,7 +44,7 @@ HackatonRemoteController
 Сначала клонируйте репозиторий проекта:
 
    ```bash
-   git clone https://github.com/username/HackatonRemoteController.git
+   git clone https://github.com/Student5427/HackatonRemoteController
    cd hackatonremotecontroller
    ```
 
