@@ -38,7 +38,6 @@ class ModelPredict:
 if __name__ == "__main__":
     cls = ModelPredict()
     result = cls.predict("..\\add_data\\hr_bot_noise\\4e874bd6-76fe-11ee-85e3-c09bf4619c03.mp3")
-    print(result)
 
 """ Код вычислений метрик f1 и wer, а также среднего времени обработки аудио файла """
 
