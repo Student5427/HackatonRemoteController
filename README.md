@@ -58,7 +58,7 @@ HackatonRemoteController
 
 Для запуска проекта выполните следующую команду:
 ```bash
-poetry run python <ваш_скрипт>.py
+poetry run python main.py
 ```
 
 ## Возможности
