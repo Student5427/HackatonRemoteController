@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "hackatonremotecontroller"
+version = "0.1.0"
+description = "HackatonRemoteController - проект, предназначенный для определения голосовых команд. Он позволяет пользователям взаимодействовать с устройствами с помощью глосовых команд, что упрощает управление и делает его более интуитивным."
+authors = ["Nevazhno <serzh.simonoid.95@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+librosa~=0.10.2.post1
+noisereduce~=3.0.3
+spacy~=3.8.2
+torch~=2.4.1
+transformers~=4.45.2
+numpy=2
+tensorflow~=2.17.0
+scikit-learn~=1.5.2
+pickle
+typing = 3.7.4.3
+
+[tool.poetry.scripts]
+download-model = "spacy.cli.download ru_core_news_sm"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
